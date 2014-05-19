@@ -1,4 +1,4 @@
 CodeLessons
 ===========
 
-Learning Exercises
+Learning exercises - mainly from the curriculum on theodinproject.com
