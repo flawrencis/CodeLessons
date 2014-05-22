@@ -10,9 +10,9 @@ $(document).ready(function () {
 	//Sketch Button is Clicked
 	$('#sketch').click(function(){
 		$('.box').remove();
-		input = parseInt(prompt('Please enter a number between 1 and 128'));
-			if (input > 128) 
-				{ input = 128; }
+		input = parseInt(prompt('Please enter a number between 1 and 100'));
+			if (input > 100) 
+				{ input = 100; }
 			else if (input < 1) 
 				{ input = 1; }
 		//Call Functions to re-fill our container
@@ -23,9 +23,9 @@ $(document).ready(function () {
 	//Funky Trails Button is Clicked
 	$('#funky').click(function(){
 		$('.box').remove();
-		input = parseInt(prompt('Please enter a number between 1 and 128'));
-			if (input > 128) 
-				{ input = 128; }
+		input = parseInt(prompt('Please enter a number between 1 and 100'));
+			if (input > 100) 
+				{ input = 100; }
 			else if (input < 1) 
 				{ input = 1; }
 		//Call Functions to re-fill our container
