@@ -16,6 +16,8 @@ h1 {
 button {
 	position: relative;
 	padding: 10px;
+	-moz-padding: 10px;
+	-webkit-padding: 10px;
 	margin-bottom: 10px;
 }
 
@@ -29,15 +31,12 @@ button {
 }
 
 .box {
-	background-color: #E3E3E3;
+	background-color: #142e5f;
 	float: left;
-	/*display: inline-block;*/
-	border: 1px solid #A3A3A3;
 }
 
 .box_coloured{
-	background-color: #BD4BE3;
-
+	background-color: #e30017;
 }
 
 
