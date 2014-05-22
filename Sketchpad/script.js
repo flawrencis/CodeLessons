@@ -1,37 +1,50 @@
 $(document).ready(function () {
 
-	//Initialise Gride
+	//Initialise Grid
 	var input = 64;
 	FillGrid(input);
-	AddColor();
+	ChangeColor();
 
-	//Button is Clicked Function
-	$('button').click(function(){
+	//Sketch Button is Clicked
+	$('#sketch').click(function(){
 		$('.box').remove();
 		input = parseInt(prompt('Please enter a number between 1 and 128'));
-			if (input > 128) {
-				input = 128;
-			}
-			else if (input < 1) {
-				input = 1;
-			}
-
+			if (input > 128) 
+				{ input = 128; }
+			else if (input < 1) 
+				{ input = 1; }
+		//Call Functions to re-fill our container
 		FillGrid(input);
-		AddColor();
+		ChangeColor();
+	});
+
+	//Funky Trails Button is Clicked
+	$('#funky').click(function(){
+		$('.box').remove();
+		input = parseInt(prompt('Please enter a number between 1 and 128'));
+			if (input > 128) 
+				{ input = 128; }
+			else if (input < 1) 
+				{ input = 1; }
+		//Call Functions to re-fill our container
+		FillGrid(input);
+		FunkyTrail();
 	});
 
 });
 
-//Function to create our grid. Square <div> items tagged with the .box class.
+//FUNCTIONS -- These functions are called in the main body
+
+//This creates our grid. Square <div> items tagged with the .box class.
 function FillGrid(boxes){
+	//For loop fills the grid
 	for (var i = 0; i<(boxes*boxes); i++) {
 		$('<div/>', {
 			'class'	: 'box',
 		}).appendTo('#grid');
 	}
-
-	var boxSize = 960 / boxes;
-	//Adjust .box size
+	//Adjust .box size based on grid size (960px)
+	var boxSize = 960 / boxes;	
 	$('.box').css({
 		'width' : boxSize,
 		'height': boxSize
@@ -39,12 +52,22 @@ function FillGrid(boxes){
 }
 
 //Change Colour Function
-function AddColor(){
+function ChangeColor(){
 	$('.box').mouseenter(function(){	
 		$(this).addClass('box_coloured');
 		$(this).mouseleave(function(){
 			$(this).fadeTo('slow', 0.7);			
 		});
 	});
+}
 
+//Funky Trails Function
+function FunkyTrail(){
+	$('.box').mouseenter(function(){
+		$(this).fadeTo(100, 0);		
+		// $(this).addClass('box_coloured');
+		$(this).mouseleave(function(){
+				$(this).fadeTo(400,1);
+		});
+	});
 }
