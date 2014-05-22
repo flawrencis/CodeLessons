@@ -2,7 +2,9 @@ $(document).ready(function () {
 
 	//Initialise Grid
 	var input = 64;
+	//FillGrid function(below)
 	FillGrid(input);
+	//ChangeColor function(below)
 	ChangeColor();
 
 	//Sketch Button is Clicked
@@ -28,30 +30,33 @@ $(document).ready(function () {
 				{ input = 1; }
 		//Call Functions to re-fill our container
 		FillGrid(input);
-		FunkyTrail();
+		LightTrail();
 	});
 
 });
 
-//FUNCTIONS -- These functions are called in the main body
 
-//This creates our grid. Square <div> items tagged with the .box class.
-function FillGrid(boxes){
+//---------------------------------------------------------
+//FUNCTIONS -- These functions are called in the main body
+//---------------------------------------------------------
+
+//This creates our grid. Square <div>s of the .box class are filled into our wrapper.
+function FillGrid(boxCount){
 	//For loop fills the grid
-	for (var i = 0; i<(boxes*boxes); i++) {
+	for (var i = 0; i<(boxCount*boxCount); i++) {
 		$('<div/>', {
 			'class'	: 'box',
 		}).appendTo('#grid');
 	}
-	//Adjust .box size based on grid size (960px)
-	var boxSize = 960 / boxes;	
+	//Adjust each .box size to fit into the grid (960px)
+	var boxSize = 960 / boxCount;	
 	$('.box').css({
 		'width' : boxSize,
 		'height': boxSize
 	});
 }
 
-//Change Colour Function
+//Change Colour Function - used in "standard" mode
 function ChangeColor(){
 	$('.box').mouseenter(function(){	
 		$(this).addClass('box_coloured');
@@ -61,13 +66,17 @@ function ChangeColor(){
 	});
 }
 
-//Funky Trails Function
-function FunkyTrail(){
+//Light Trails Function
+function LightTrail(){
 	$('.box').mouseenter(function(){
 		$(this).fadeTo(100, 0);		
 		// $(this).addClass('box_coloured');
 		$(this).mouseleave(function(){
 				$(this).fadeTo(400,1);
+				$(this).css("background-color", "#142e5f");
+
 		});
 	});
 }
+
+
