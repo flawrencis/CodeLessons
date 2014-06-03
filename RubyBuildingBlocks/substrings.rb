@@ -5,7 +5,7 @@ def substrings (words, dictionary)
 	string.each do |word|
 		dictionary.each do |subword|
 			if word.include?(subword)
-				puts subword
+				
 				substring[subword] += 1
 			end
 		end 
