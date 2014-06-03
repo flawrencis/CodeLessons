@@ -5,7 +5,6 @@ def substrings (words, dictionary)
 	string.each do |word|
 		dictionary.each do |subword|
 			if word.include?(subword)
-				
 				substring[subword] += 1
 			end
 		end 
@@ -18,4 +17,4 @@ end
 word_list = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 word_string = "Howdy partner, sit down! How's it going?"
 
-substrings("word_string", word_list)
+substrings(word_string, word_list)
