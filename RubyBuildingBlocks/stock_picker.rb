@@ -5,7 +5,7 @@ def stock_picker(prices)
 	days = []
 
 	while buy_day < prices.size do
-		sell_day = buy_day 						#No time travel allowed!
+		sell_day = buy_day 						#No backwards time travel allowed!
 
 		while sell_day < prices.size do
 			revenue = prices[sell_day].to_i - prices[buy_day].to_i
