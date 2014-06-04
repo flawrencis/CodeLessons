@@ -5,6 +5,7 @@ def bubble_sort(unsorted_array)
 		
 		unsorted_array.each_with_index do |item, index|
 			next_item = unsorted_array[index+1]
+			
 			if next_item.nil?											#End loop if you reach the end of the array
 				break	
 			elsif item > next_item
@@ -17,7 +18,31 @@ def bubble_sort(unsorted_array)
 	unsorted_array																#Return the array
 end
 
-#Test Case
+def bubble_sort_by(unsorted_array)
+	loop_length = unsorted_array.length - 1 									
+
+	while loop_length > 0
+		
+		unsorted_array.each_with_index do |item, index|
+			next_item = unsorted_array[index+1]
+			
+			if next_item.nil?											
+				break	
+			elsif yield(unsorted_array[index], unsorted_array[index+1]) > 0 
+				unsorted_array.insert(index+1, unsorted_array.delete_at(index))			
+			end
+		
+		end
+		loop_length -= 1												
+	end
+	unsorted_array																
+end
+
+
+#Test Code
 
 array = [51, 200, 34, 2, 2, 5, 30, 66, 899, 10203, 87]
+word_array = ["hi","hello","hey"]
+
 p bubble_sort(array)
+p bubble_sort_by(word_array) { |left, right| left.length - right.length }
