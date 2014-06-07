@@ -80,13 +80,6 @@ module Enumerable
 
 end
 
-puts [1, 2, 3, 4].inject(0) { |result, element| result + element }
-puts [1, 2, 3, 4].my_inject(0) { |result, element| result + element }
-
-longest = %w{ cat sheep bear }.my_inject do |memo, word|
-   memo.length > word.length ? memo : word
-end
-puts longest
 
 
 
