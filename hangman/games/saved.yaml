@@ -1,0 +1,28 @@
+--- !ruby/object:Hangman
+word:
+- c
+- o
+- n
+- c
+- i
+- l
+- i
+- a
+- r
+display:
+- _
+- _
+- n
+- _
+- i
+- l
+- i
+- a
+- _
+misses:
+- g
+- b
+- m
+- w
+- ei
+turns: 1
