@@ -39,11 +39,13 @@ def merge(array1, array2, merged_array=[])
 	merged_array												#Returns the merged array
 end
 
-#PRINT TESTS TO CONSOLE
+#--------------------------------------------->
+
+#INITIALISE TESTS
 array = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]							#Test Case 1 - Counting backwards
 array2 = [-32, 2000, 54, -3, 77, 91, 45, 8, 101, 54, 1]			#Test Case 2 - Negative numbers, repeating numbers, non-sequential
 array3 = ['a', 'c', 'd', 'u', 'n', 'z', 'uganda', 'cow']		#Test Case 3 - Strings / Letters
-
-p merge_sort(array)
-p merge_sort(array2)
-p merge_sort(array3)
+#PRINT TESTS TO CONSOLE (Results in comments)
+p merge_sort(array)					#=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+p merge_sort(array2)				#=> [-32, -3, 1, 8, 45, 54, 54, 77, 91, 101, 2000]
+p merge_sort(array3)				#=> ["a", "c", "cow", "d", "n", "u", "uganda", "z"]
