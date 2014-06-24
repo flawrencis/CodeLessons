@@ -1,3 +1,6 @@
+# The merge_sort function takes an array of unordered objects, 
+# and returns an array of ordered objects, using a merge sort algorithm.
+
 def merge_sort(array)
 	len = array.length
 	return array if len == 1 				#Base case set to an array size of 1
@@ -39,6 +42,8 @@ end
 #PRINT TESTS TO CONSOLE
 array = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]							#Test Case 1 - Counting backwards
 array2 = [-32, 2000, 54, -3, 77, 91, 45, 8, 101, 54, 1]			#Test Case 2 - Negative numbers, repeating numbers, non-sequential
+array3 = ['a', 'c', 'd', 'u', 'n', 'z', 'uganda', 'cow']		#Test Case 3 - Strings / Letters
 
 p merge_sort(array)
 p merge_sort(array2)
+p merge_sort(array3)
