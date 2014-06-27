@@ -42,7 +42,7 @@ end
 #--------------------------------------------->
 
 #INITIALISE TESTS
-array = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]							#Test Case 1 - Counting backwards
+array = [10,9,8,7,6,5,4,3,2,1]							#Test Case 1 - Counting backwards
 array2 = [-32, 2000, 54, -3, 77, 91, 45, 8, 101, 54, 1]			#Test Case 2 - Negative numbers, repeating numbers, non-sequential
 array3 = ['a', 'c', 'd', 'u', 'n', 'z', 'uganda', 'cow']		#Test Case 3 - Strings / Letters
 #PRINT TESTS TO CONSOLE (Results in comments)
