@@ -1,16 +1,20 @@
 #Basic Binary Search Algorithm
-#BinarySearchTree class
+#Constructs a searchable Binary Tree out of an unsorted array
+
 # 1. Class instance accepts an array as input
-# 2. Array is automatically sorted on initialize
+# 2. Array is automatically sorted on initialize and the tree is built
 # 3. Tree is constructed from array items.
 # 4. Each item becomes an instance of the Node class
 # 5. Tree can now be searched using one of three search methods
 
-# 				SEARCH METHODS:
-# 				breadth_first_search(query)
-# 				depth_first_search(query)
-# 				dfs_recursive(query) 
+# 	SEARCH METHODS:
+# 	breadth_first_search(query)
+# 	depth_first_search(query)
+# 	dfs_recursive(query) 
 
+#END
+
+#Constructor for the individual nodes
 class Node
 	attr_accessor :value, :left_child, :right_child
 
@@ -21,6 +25,7 @@ class Node
 	end
 end
 
+#Constructor for our Binary Tree, includes three search methods
 class BinarySearchTree
 	attr_accessor :array, :tree
 
@@ -31,6 +36,7 @@ class BinarySearchTree
 		build_tree(@array)
 	end
 
+	#Sorts the array using the merge_sort method, and builds the tree.
 	def build_tree(array, left=0, right=array.length-1)
 		return if left > right
 
@@ -46,24 +52,7 @@ class BinarySearchTree
 		@tree
 	end
 
-	def display_tree()						#Use this function for debugging / displaying the tree.
-		list = []
-		yield @tree.value
-		left_child = @tree.left_child
-		right_child = @tree.right_child
-
-		list << left_child if left_child != nil
-		list << right_child if right_child != nil
-
-		loop do
-			break if list.empty?
-			node = list.shift
-			yield node.value
-			list << node.left_child if node.left_child != nil
-			list << node.right_child if node.right_child != nil
-		end
-	end
-
+	#ITERATIVE BREADTH FIRST SEARCH method
 	def breadth_first_search(query)
 		queue = []
 		root = @tree.value
@@ -87,6 +76,7 @@ class BinarySearchTree
 		end
 	end
 
+	#ITERATIVE DEPTH FIRST SEARCH METHOD
 	def depth_first_search(query)
 		stack = [@tree]
 
@@ -95,12 +85,13 @@ class BinarySearchTree
 
 			node = stack.pop
 			return node if query == node.value
-			p node.value
+
 			stack.push node.left_child if node.left_child != nil
 			stack.push node.right_child if node.right_child != nil
 		end
 	end
-
+	
+	#RECURSIVE DEPTH FIRST SEARCH METHOD
 	def dfs_recursive(query, node=@tree)		
 		return nil if node.nil?
 		return node if query == node.value
@@ -111,6 +102,7 @@ class BinarySearchTree
 		return right_search if right_search != nil 
 	end
 
+	#MERGE SORT METHOD - Used for pre-sorting the array!
 	def merge_sort(array)
 		len = array.length
 		return array if len == 1 				#Base case set to an array size of 1
@@ -122,6 +114,7 @@ class BinarySearchTree
 		merge(a1, a2)							#Call the merge function on the split arrays				
 	end
 
+	#Helper method for Merge Sort
 	def merge(array1, array2, merged_array=[])
 		len_of_a1 = array1.length									#Get length of arrays and compare to the array's index
 		len_of_a2 = array2.length
@@ -146,10 +139,28 @@ class BinarySearchTree
 		merged_array												#Returns the merged array
 	end
 
+	#Use this function for debugging / displaying the tree.
+	def display_tree()						
+		list = []
+		yield @tree.value
+		left_child = @tree.left_child
+		right_child = @tree.right_child
+
+		list << left_child if left_child != nil
+		list << right_child if right_child != nil
+
+		loop do
+			break if list.empty?
+			node = list.shift
+			yield node.value
+			list << node.left_child if node.left_child != nil
+			list << node.right_child if node.right_child != nil
+		end
+	end
 end
 
 
-
+###########
 # TEST CODE
 test_array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
 test_array2 = [9,8,7,6,5,4,3,2,1,0]
@@ -161,8 +172,7 @@ tree = BinarySearchTree.new(test_array)
 tree.display_tree {|x| print "#{x} "}
 print "\n"
 
-p tree.depth_first_search(4)
-
-
-
-
+#These should all return the appropriate 'Node' object
+p tree.breadth_first_search(23)
+p tree.depth_first_search(23)
+p tree.dfs_recursive(23)
