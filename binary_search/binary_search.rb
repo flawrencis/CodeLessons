@@ -33,7 +33,7 @@ class BinarySearchTree
 		@tree
 	end
 
-	def traverse_tree()						#Goes over the tree from top to bottom and left to right
+	def display_tree()						#Uses breadth first traversion to display the tree.
 		list = []
 		yield @tree.value
 		left_child = @tree.left_child
@@ -51,6 +51,29 @@ class BinarySearchTree
 		end
 	end
 
+	def breadth_first_search(query)
+		queue = []
+		root = @tree.value
+
+		return @tree if root == query	#Returns the root item if the query matches
+
+		left_child = @tree.left_child
+		right_child = @tree.right_child
+
+		queue << left_child if left_child != nil
+		queue << right_child if right_child != nil
+		
+		loop do
+			return nil if queue.empty?
+
+			node = queue.shift
+			return node if query == node.value
+
+			queue << node.left_child if node.left_child != nil
+			queue << node.right_child if node.right_child != nil
+		end
+	end
+
 	def merge_sort(array)
 		len = array.length
 		return array if len == 1 				#Base case set to an array size of 1
@@ -59,7 +82,7 @@ class BinarySearchTree
 		array2 = array[len/2..-1]				#Array two gets the longer half if it's an odd length
 		a1 = merge_sort(array1)					#Split array1 in half again recursively
 		a2 = merge_sort(array2)					#Split array2 in half again recursively
-		merge(a1, a2)							#Call the merge function on the split arrays
+		merge(a1, a2)							#Call the merge function on the split arrays				
 	end
 
 	def merge(array1, array2, merged_array=[])
@@ -92,5 +115,7 @@ test_array2 = [9,8,7,6,5,4,3,2,1,0]
 test_array3 = ['a', 'c', 'd', 'u', 'n', 'z', 'uganda', 'cow']
 
 tree = BinarySearchTree.new(test_array2)
-tree.traverse_tree {|x| print "#{x} "}
+tree.display_tree {|x| print "#{x} "}
 print "\n"
+
+p tree.breadth_first_search(10)
