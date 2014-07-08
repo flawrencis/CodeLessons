@@ -76,8 +76,6 @@ module Enumerable
     end
     total
   end
-
-
 end
 
 
